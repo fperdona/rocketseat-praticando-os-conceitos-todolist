@@ -1,0 +1,22 @@
+.header{
+    background: var(--gray-700);
+    display: flex;
+    justify-content: center;
+    padding: 1.25rem 0;
+    align-items: center;
+    height: 200px;
+}
+.header img{
+    height: 2.25rem;
+    margin-top: 0.625rem;
+}
+
+.header p{
+    font-weight: 700;
+    padding: 0 0.5rem;
+    font-size: 2.5rem;
+    color: var(--blue-300);
+}
+.header p span.lastLetters{
+    color: var(--purble-300);
+}

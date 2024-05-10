@@ -1,0 +1,23 @@
+.container{
+    background-color: var(--blue-500);
+    color: var(--gray-100);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 8px;
+    gap: 0.25rem;
+    
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 0.875rem;
+
+    transition: 0.2s;
+}
+
+.container:hover {
+  background-color: var(--blue-300);
+  cursor: pointer;
+}
