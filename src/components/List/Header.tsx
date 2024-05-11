@@ -1,11 +1,13 @@
-import styles from './Header.module.css'
+import styles from './Header.module.css';
 
+// Definição das propriedades esperadas pelo componente Header
 interface Props {
-    tasksCounter: number
-    checkedTasksCounter: number
+    tasksCounter: number;
+    checkedTasksCounter: number; 
 }
 
-export function Header({tasksCounter, checkedTasksCounter}: Props){
+// Componente funcional Header
+export function Header({ tasksCounter, checkedTasksCounter }: Props){
     return(
         <header className={styles.container}>
             <aside>
@@ -15,11 +17,12 @@ export function Header({tasksCounter, checkedTasksCounter}: Props){
             <aside>
                 <p>Concluídas</p>
                 <span>
+                    {/* Exibe o número de tarefas concluídas de forma condicional */}
                     {tasksCounter === 0
-                    ? tasksCounter
-                    : `${checkedTasksCounter} de ${tasksCounter}`}
+                        ? tasksCounter // Se não houver tarefas criadas, exibe 0
+                        : `${checkedTasksCounter} de ${tasksCounter}`} {/* Caso contrário, exibe o número de tarefas concluídas e o total */}
                 </span>
             </aside>
         </header>
-    )
+    );
 }

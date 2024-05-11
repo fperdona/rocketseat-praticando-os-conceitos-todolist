@@ -9,7 +9,7 @@
     border-radius: 8px;
 
     padding: 1rem;
-    gap:1.25rem;
+    gap:1.25rem; /* Espaço entre os filhos diretos do contêiner */
     margin-bottom: 0.75rem;
 }
 
@@ -23,14 +23,16 @@
     gap:0.75rem;
 }
 
+/* Esconde o input do tipo checkbox */
 .container label input[type='checkbox'] {
     display: none;
 }
 
+/* Estilo do elemento visual que representa o checkbox */
 .checkbox {
     border-radius: 100%;
     height: 1.125rem;
-    width: 1.125rem;
+    min-width: 1.125rem;
     
     transition: 0.2s all;
   
@@ -69,6 +71,7 @@
     color: var(--gray-300)
 }
 
+/* Estilo do botão para remover a tarefa */
 .container button {
   border: none;
   background-color: transparent;
@@ -87,6 +90,7 @@
   color: var(--red-500);
 }
 
+/* Estilo do ícone de lixeira dentro do botão */
 .deleteTask {
   display: flex;
   align-items: center;

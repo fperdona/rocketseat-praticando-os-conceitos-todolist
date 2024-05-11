@@ -2,6 +2,7 @@ import { Trash, Check } from 'phosphor-react';
 import { ItemTask } from '../../App'
 import styles from './Task.module.css'
 
+// Definições das propriedades que o componente Task recebe
 interface Props {
     data: ItemTask
     removeTask: (id: number) => void
@@ -18,6 +19,7 @@ export function Task({ data, removeTask, toggleTaskStatus }: Props){
         removeTask(data.id)
     }
 
+    // Define as classes CSS para o checkbox e o parágrafo com base no estado da tarefa
     const checkboxCheckedClassname = data.isChecked
         ? styles['checkbox-checked']
         : styles['checkbox-unchecked']
@@ -28,11 +30,14 @@ export function Task({ data, removeTask, toggleTaskStatus }: Props){
     return(
         <div className={styles.container}>
             <div>
-                <label htmlFor="checkbox" onClick={handleTaskToggle}>
+                <label htmlFor="checkbox">
+                    {/* Input oculto do tipo "checkbox" */}
                     <input readOnly type="checkbox" checked={data.isChecked}/>
-                    <span className={`${styles.checkbox} ${checkboxCheckedClassname}`}>
+                    {/* Span visual que representa o checkbox */}
+                    <span className={`${styles.checkbox} ${checkboxCheckedClassname}`} onClick={handleTaskToggle}>
                         {data.isChecked && <Check size={12} />}
                     </span>
+                    {/* Texto da tarefa */}
                     <p className={`${styles.paragraph} ${paragraphCheckedClassname}`}>
                         {data.text}
                     </p>

@@ -1,6 +1,6 @@
-// Importa o ícone de círculo de adição da biblioteca Phosphor
+/** Este código terá mais comentários do que o habitual, pois revisei-o durante a leitura */
+
 import { PlusCircle } from 'phosphor-react'; 
-// Importa o hook useState do React
 import { useState } from 'react'; 
 
 // Importa os componentes necessários do aplicativo
@@ -11,7 +11,6 @@ import { Header as ListHeader } from './components/List/Header';
 import { Empty } from './components/List/Empty'; 
 import { Task} from './components/List/Task'; 
 
-// Importa os estilos CSS do aplicativo
 import styles from './App.module.css'; 
 
 // Define a interface para representar uma tarefa
@@ -21,7 +20,6 @@ export interface ItemTask {
   isChecked: boolean;
 }
 
-// Define o componente principal do aplicativo
 function App() { 
   // Define o estado para armazenar as tarefas e a função para atualizá-lo
   const [tasks, setTasks] = useState<ItemTask[]>([]); 
@@ -29,18 +27,26 @@ function App() {
   // Define o estado para armazenar o valor do campo de entrada e a função para atualizá-lo
   const [inputValue, setInputValue] = useState(''); 
 
-  // Calcula o número de tarefas marcadas como concluídas
-  const checkedTasksCounter = tasks.reduce((prevValue, currentTask) => { 
-    if (currentTask.isChecked) { // Verifica se a tarefa atual está marcada como concluída
-      return prevValue + 1; // Se estiver, incrementa o contador de tarefas concluídas
-    }
-    return prevValue; // Se não estiver, retorna o valor atual do contador sem modificação
-  }, 0);
+    // Calcula o número de tarefas marcadas como concluídas, utilizando a função reduce
+    const checkedTasksCounter = tasks.reduce((prevValue, currentTask) => { 
+      // O primeiro parâmetro da função reduce é uma função de callback
+      // Essa função recebe dois parâmetros: prevValue (valor acumulado) e currentTask (valor atual do array)
+      
+      // Verifica se a tarefa atual está marcada como concluída
+      if (currentTask.isChecked) { 
+        // Se a tarefa estiver marcada como concluída, incrementa o contador de tarefas concluídas
+        return prevValue + 1; 
+      }
+      // Se a tarefa não estiver marcada como concluída, retorna o valor atual do contador sem modificação
+      return prevValue; 
+      
+    }, 0);
+    // O segundo argumento da função reduce é o valor inicial do contador, que começa em 0
+  
 
 
-  // Função para adicionar uma nova tarefa à lista
   function handleAddTask() { 
-    if (!inputValue) { // Verifica se o campo de entrada está vazio
+    if (!inputValue) { // Verifica se o input está vazio
       alert('O campo para adicionar uma tarefa não pode estar vazio!'); // Exibe um alerta se o campo estiver vazio
       return;
     }
@@ -48,21 +54,19 @@ function App() {
     // Cria um novo objeto de tarefa
     const newTask: ItemTask = { 
       id: new Date().getTime(), // Atribui um ID único baseado no tempo atual
-      text: inputValue, // Atribui o texto do campo de entrada à propriedade text
-      isChecked: false, // Define a propriedade isChecked como falsa, pois a tarefa ainda não está concluída
+      text: inputValue, // Atribui o input à propriedade text
+      isChecked: false, // Falso, pois a tarefa ainda não está concluída
     };
 
     // Adiciona a nova tarefa ao estado tasks
     setTasks((state) => [...state, newTask]); 
-    setInputValue(''); // Limpa o valor do campo de entrada
+    setInputValue(''); // Limpa o valor do input
   }
 
-  // Função para remover uma tarefa da lista
   function handleRemoveTask(id: number) { 
     // Filtra as tarefas para remover a tarefa com o ID especificado
     const filteredTasks = tasks.filter((task) => task.id !== id); 
 
-    // Pergunta ao usuário se ele deseja realmente apagar a tarefa
     if (!confirm('Deseja mesmo apagar essa tarefa?')) { 
       //Caso clique em cancelar retorna como estava antes e sai da função.
       return;
@@ -74,7 +78,7 @@ function App() {
 
   // Função para alternar o estado de conclusão de uma tarefa
   function handleToggleTask({ id, value }: { id: number; value: boolean }) { 
-    // Mapeia todas as tarefas
+
     const updatedTasks = tasks.map((task) => { 
       // Verifica se a tarefa atual tem o mesmo ID da tarefa que deve ser atualizada
       if (task.id === id) { 
